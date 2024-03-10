@@ -2,38 +2,40 @@ import 'package:flutter/material.dart';
 import 'onoroff.dart';
 
 class SkillsPage extends StatelessWidget {
+  const SkillsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fifth Page'),
+        title: const Text('Fifth Page'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'This is the Fifth Page',
               style: TextStyle(fontSize: 20.0),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          OnorOffPage()), // Navigate to ThirdPage
+                          const OnorOffPage()), // Navigate to ThirdPage
                 );
               },
-              child: Text('Go to Sixth Page'),
+              child: const Text('Go to Sixth Page'),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Go Back'),
+              child: const Text('Go Back'),
             ),
           ],
         ),

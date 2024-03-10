@@ -2,38 +2,40 @@ import 'package:flutter/material.dart';
 import 'seven.dart';
 
 class OnorOffPage extends StatelessWidget {
+  const OnorOffPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sixth Page'),
+        title: const Text('Sixth Page'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'This is the Sixtn Page',
               style: TextStyle(fontSize: 20.0),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          SevenPage()), // Navigate to ThirdPage
+                          const SevenPage()), // Navigate to ThirdPage
                 );
               },
-              child: Text('Go to Seventh Page'),
+              child: const Text('Go to Seventh Page'),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Go Back'),
+              child: const Text('Go Back'),
             ),
           ],
         ),

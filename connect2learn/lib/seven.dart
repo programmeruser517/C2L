@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'eight.dart';
 import 'nine.dart' ;
 class SevenPage extends StatelessWidget {
+  const SevenPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
