@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'eight.dart';
-import 'nine.dart' ;
+import 'nine.dart';
+
 class SevenPage extends StatelessWidget {
   const SevenPage({super.key});
 
@@ -39,7 +41,12 @@ class SevenPage extends StatelessWidget {
             const SizedBox(height: 10.0),
             ElevatedButton(
               onPressed: () {
-                print('Link button clicked');
+                Clipboard.setData(ClipboardData(text: GlobalData.user_url));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Link copied to clipboard'),
+                  ),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 44, 67, 217), // background
@@ -86,4 +93,5 @@ class SevenPage extends StatelessWidget {
 
 class GlobalData {
   static String user_url = 'https://www.google.com';
+  static String user = 'Xiangbo';
 }

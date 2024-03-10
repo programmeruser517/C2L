@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'seven.dart';
+import 'schedule.dart';
 
 class OnorOffPage extends StatefulWidget {
   const OnorOffPage({super.key});
@@ -14,6 +15,9 @@ class _OnorOffPageState extends State<OnorOffPage> {
   late GoogleMapController mapController;
   LatLng currentLocation = const LatLng(0.0, 0.0);
   final Set<Marker> _markers = {};
+  bool isSwitched = false;
+  final Color mellowGreen = Color.fromARGB(255, 44, 67, 217);
+  int points = 0; // Add this line
 
   @override
   void initState() {
@@ -53,52 +57,74 @@ class _OnorOffPageState extends State<OnorOffPage> {
 
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
-  Position position = await Geolocator.getCurrentPosition();
-  final location = LatLng(position.latitude, position.longitude);
+    Position position = await Geolocator.getCurrentPosition();
+    final location = LatLng(position.latitude, position.longitude);
   
-  final marker = Marker(
-    markerId: const MarkerId("current_location"),
-    position: location,
-    infoWindow: const InfoWindow(
-      title: 'You :)',
-    ),
-  );
-
-  setState(() {
-    currentLocation = location;
-    _markers.add(marker);
-  });
-
-  // Check if mapController is initialized before calling animateCamera
-  mapController.animateCamera(
-    CameraUpdate.newCameraPosition(
-      CameraPosition(
-        target: location,
-        zoom: 15.0,
+    final marker = Marker(
+      markerId: const MarkerId("current_location"),
+      position: location,
+      infoWindow: const InfoWindow(
+        title: 'You :)',
       ),
-    ),
-  );
-}
+    );
 
-void _onMapCreated(GoogleMapController controller) {
-  mapController = controller;
-  if(currentLocation.latitude != 0.0 && currentLocation.longitude != 0.0) {
-    controller.animateCamera(
+    setState(() {
+      currentLocation = location;
+      _markers.add(marker);
+    });
+
+    // Check if mapController is initialized before calling animateCamera
+    mapController.animateCamera(
       CameraUpdate.newCameraPosition(
         CameraPosition(
-          target: currentLocation,
+          target: location,
           zoom: 15.0,
         ),
       ),
     );
   }
-}
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+    if(currentLocation.latitude != 0.0 && currentLocation.longitude != 0.0) {
+      controller.animateCamera(
+        CameraUpdate.newCameraPosition(
+          CameraPosition(
+            target: currentLocation,
+            zoom: 15.0,
+          ),
+        ),
+      );
+    }
+  }
 
   @override
- Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hey, _____.'),
+        title: Text('Hey, ${GlobalData.user}!'),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SchedPage()),
+            );
+          },
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              '${points} pts', // Display the points
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
       ),
       body: Center(
         child: Column(
@@ -111,28 +137,65 @@ void _onMapCreated(GoogleMapController controller) {
                   target: currentLocation,
                   zoom: 15,
                 ),
-                markers: _markers, // Add this line
+                markers: _markers,
                 myLocationEnabled: true,
               ),
             ),
             const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SevenPage()),
-                );
-              },
-              child: const Text('Go to Seventh Page'),
+            Text(
+              isSwitched ? 'ON' : 'OFF',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20.0, // Increase the font size by 5 pixels
+              ),
             ),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
+            Switch(
+              value: isSwitched,
+              onChanged: (value) {
+                setState(() {
+                  isSwitched = value;
+                  // Add any additional logic you want to execute when the switch is toggled
+                });
               },
-              child: const Text('Go Back'),
+              activeColor: mellowGreen,
             ),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const SevenPage()),
+          );
+        },
+        child: const Icon(Icons.share),
+        backgroundColor: Color.fromARGB(255, 44, 67, 217),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+    );
+  }
+}
+
+class Screen4 extends StatelessWidget {
+  const Screen4({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Screen 4'),
+      ),
+      body: Center(
+        //make the page literally redirect to the schedule page
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SchedPage()),
+            );
+          },
+          child: const Text('Go to Schedule'),
         ),
       ),
     );
