@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage>
     _animationController.forward();
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        Navigator.pushNamed(context, '/second');
+        Navigator.pushNamed(context, '/third');
       }
     });
   }
