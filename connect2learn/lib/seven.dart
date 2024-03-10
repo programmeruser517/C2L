@@ -83,3 +83,7 @@ class SevenPage extends StatelessWidget {
     );
   }
 }
+
+class GlobalData {
+  static String user_url = 'https://www.google.com';
+}
