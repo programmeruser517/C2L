@@ -1,34 +1,34 @@
 {
-    "name": "connect2learn",
-    "short_name": "connect2learn",
+    "name": "C2L | Connect2Learn",
+    "short_name": "C2L",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A Flutter project creating an academic social network.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "icons/Icon-192.png",
+            "src": "icons/ic_launcher.jpg",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/jpg"
         },
         {
-            "src": "icons/Icon-512.png",
+            "src": "icons/ic_launcher.jpg",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/jpg"
         },
         {
-            "src": "icons/Icon-maskable-192.png",
+            "src": "icons/ic_launcher.jpg",
             "sizes": "192x192",
-            "type": "image/png",
+            "type": "image/jpg",
             "purpose": "maskable"
         },
         {
-            "src": "icons/Icon-maskable-512.png",
+            "src": "icons/ic_launcher.jpg",
             "sizes": "512x512",
-            "type": "image/png",
+            "type": "image/jpg",
             "purpose": "maskable"
         }
     ]
