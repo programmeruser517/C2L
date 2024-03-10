@@ -13,7 +13,6 @@ void main() {
   runApp(const MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -23,20 +22,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'C2L',
       theme: ThemeData(
-        // This is the theme of your application.
-        // ...
+          // This is the theme of your application.
+          // ...
           ),
-          // center this title
+      // center this title
       home: const MyHomePage(title: 'C2L | Home Page'),
       routes: {
-        '/second': (context) => LoginPage(),
-        '/third': (context) => PermsPage(),
-        '/fourth': (context) => SchedPage(),
-        '/fifth': (context) => SkillsPage(),
-        '/sixth': (context) => OnorOffPage(),
-        '/seventh': (context) => SevenPage(),
-        '/eight': (context) => EightPage(),
-        '/ninth': (context) => NinePage(),
+        '/second': (context) => const LoginPage(),
+        '/third': (context) => const PermsPage(),
+        '/fourth': (context) => const SchedPage(),
+        '/fifth': (context) => const SkillsPage(),
+        '/sixth': (context) => const OnorOffPage(),
+        '/seventh': (context) => const SevenPage(),
+        '/eight': (context) => const EightPage(),
+        '/ninth': (context) => const NinePage(),
       },
     );
   }
@@ -51,40 +50,66 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  
-//shamble
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    );
+    _fadeAnimation =
+        Tween<double>(begin: 1.0, end: 0.0).animate(_animationController);
+    _animationController.forward();
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        Navigator.pushNamed(context, '/second');
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-        return Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
         centerTitle: true,
       ),
       body: Center(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-                        Text(
-              'This is the Home Page',
-              style: TextStyle(fontSize: 20.0),
-            ),
-            SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/second');
-              },
-              child: Text('Go to Second Page'),
-            ),
-          ],
+        child: AnimatedBuilder(
+          animation: _fadeAnimation,
+          builder: (context, child) {
+            return Opacity(
+              opacity: _fadeAnimation.value,
+              child: child,
+            );
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              // Existing content
+              // New image
+              const SizedBox(height: 20.0),
+              // Load our image from the images folder
+              Image.asset(
+                'images/logo_small.jpg',
+                width: 400.0,
+                height: 400.0,
+              ),
+            ],
+          ),
         ),
       ),
-          );
+    );
   }
 }
