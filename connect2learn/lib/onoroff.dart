@@ -12,7 +12,7 @@ class OnorOffPage extends StatefulWidget {
 
 class _OnorOffPageState extends State<OnorOffPage> {
   late GoogleMapController mapController;
-  LatLng currentLocation = LatLng(0.0, 0.0);
+  LatLng currentLocation = const LatLng(0.0, 0.0);
   final Set<Marker> _markers = {};
 
   @override
@@ -57,9 +57,9 @@ class _OnorOffPageState extends State<OnorOffPage> {
   final location = LatLng(position.latitude, position.longitude);
   
   final marker = Marker(
-    markerId: MarkerId("current_location"),
+    markerId: const MarkerId("current_location"),
     position: location,
-    infoWindow: InfoWindow(
+    infoWindow: const InfoWindow(
       title: 'You :)',
     ),
   );
@@ -70,16 +70,14 @@ class _OnorOffPageState extends State<OnorOffPage> {
   });
 
   // Check if mapController is initialized before calling animateCamera
-  if (mapController != null) {
-    mapController.animateCamera(
-      CameraUpdate.newCameraPosition(
-        CameraPosition(
-          target: location,
-          zoom: 15.0,
-        ),
+  mapController.animateCamera(
+    CameraUpdate.newCameraPosition(
+      CameraPosition(
+        target: location,
+        zoom: 15.0,
       ),
-    );
-  }
+    ),
+  );
 }
 
 void _onMapCreated(GoogleMapController controller) {

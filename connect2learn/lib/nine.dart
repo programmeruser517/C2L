@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'seven.dart';
 
 class NinePage extends StatelessWidget {
-  const NinePage({Key? key}) : super(key: key);
+  const NinePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +16,8 @@ class NinePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Center(
-              child: const Text(
+            const Center(
+              child: Text(
                 'Scan the QR code\n or open the link \nto connect with me!  :)',
                 style: TextStyle(fontSize: 16.0), // Smaller font size
                 textAlign: TextAlign.center, // Center align the text
@@ -45,7 +45,7 @@ class NinePage extends StatelessWidget {
                 _launchURL(GlobalData.user_url);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 44, 67, 217), // Background color
+                backgroundColor: const Color.fromARGB(255, 44, 67, 217), // Background color
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0), // Rounded corners
                 ),
