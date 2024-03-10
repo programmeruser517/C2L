@@ -25,7 +25,7 @@ class SchedPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          const SkillsPage()), // Navigate to ThirdPage
+                          SkillsPage()), // Navigate to ThirdPage
                 );
               },
               child: const Text('Go to Fifth Page'),
