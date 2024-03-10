@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'onoroff.dart';
 
 class SkillsPage extends StatefulWidget {
+  const SkillsPage({super.key});
+
   @override
   _SkillsPageState createState() => _SkillsPageState();
 }
@@ -23,17 +25,17 @@ class _SkillsPageState extends State<SkillsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Skill Page'),
+        title: const Text('Skill Page'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'What skills are you good at?',
               style: TextStyle(fontSize: 20.0),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: TextField(
@@ -41,7 +43,7 @@ class _SkillsPageState extends State<SkillsPage> {
                 decoration: InputDecoration(
                   hintText: 'e.g. Calculus I, Python',
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.arrow_forward),
+                    icon: const Icon(Icons.arrow_forward),
                     onPressed: addSkill,
                   ),
                 ),
@@ -49,7 +51,7 @@ class _SkillsPageState extends State<SkillsPage> {
                 maxLines: 1,
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Wrap(
               spacing: 8.0,
               children: [
@@ -65,7 +67,7 @@ class _SkillsPageState extends State<SkillsPage> {
               ],
             ),
             if (skills.isNotEmpty)
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
             if (skills.isNotEmpty)
               ElevatedButton(
                 onPressed: () {
@@ -73,33 +75,33 @@ class _SkillsPageState extends State<SkillsPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            OnorOffPage()), // Navigate to OnorOffPage
+                            const OnorOffPage()), // Navigate to OnorOffPage
                   );
                 },
-                child: Text('Continue'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 44, 67, 217),
+                  backgroundColor: const Color.fromARGB(255, 44, 67, 217),
                   foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),
+                child: const Text('Continue'),
               ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Go Back'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 44, 67, 217),
+                backgroundColor: const Color.fromARGB(255, 44, 67, 217),
                 foregroundColor: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
+              child: const Text('Go Back'),
             ),
           ],
         ),

@@ -103,18 +103,18 @@ class _SchedPageState extends State<SchedPage> {
                     print(_controllers_real);
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SkillsPage()), // Navigate to SkillsPage
+                      MaterialPageRoute(builder: (context) => const SkillsPage()), // Navigate to SkillsPage
                     );
                   },
-                  child: Text('Continue'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 44, 67, 217),
+                    backgroundColor: const Color.fromARGB(255, 44, 67, 217),
                     foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
-                  )
+                  ),
+                  child: const Text('Continue')
                   
                 ),
               ),

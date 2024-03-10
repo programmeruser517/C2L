@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'schedule.dart';
 
 class PermsPage extends StatefulWidget {
+  const PermsPage({super.key});
+
   @override
   _PermsPageState createState() => _PermsPageState();
 }
@@ -16,16 +18,16 @@ class _PermsPageState extends State<PermsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Permission Request"),
+          title: const Text("Permission Request"),
           content: Text("Are you sure you want to allow $title?"),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: Text("Deny"),
+              child: const Text("Deny"),
             ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(true),
-              child: Text("Allow"),
+              child: const Text("Allow"),
             ),
           ],
         );
@@ -53,7 +55,7 @@ class _PermsPageState extends State<PermsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Permissions Page'),
+        title: const Text('Permissions Page'),
       ),
       body: Center(
         child: Column(
@@ -63,9 +65,9 @@ class _PermsPageState extends State<PermsPage> {
               locationAllowed && storageAllowed && otherAllowed
                   ? 'Thank you!'
                   : 'We need your permission...',
-              style: TextStyle(fontSize: 20.0),
+              style: const TextStyle(fontSize: 20.0),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Opacity(
               opacity: locationAllowed ? 0.5 : 1.0,
               child: ElevatedButton(
@@ -74,18 +76,18 @@ class _PermsPageState extends State<PermsPage> {
                     : () {
                         _requestPermission('Location');
                       },
-                child: Text('Allow Location'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 44, 67, 217),
+                  backgroundColor: const Color.fromARGB(255, 44, 67, 217),
                   foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),
+                child: const Text('Allow Location'),
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Opacity(
               opacity: storageAllowed ? 0.5 : 1.0,
               child: ElevatedButton(
@@ -94,18 +96,18 @@ class _PermsPageState extends State<PermsPage> {
                     : () {
                         _requestPermission('Storage');
                       },
-                child: Text('Allow Storage'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 44, 67, 217),
+                  backgroundColor: const Color.fromARGB(255, 44, 67, 217),
                   foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),
+                child: const Text('Allow Storage'),
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Opacity(
               opacity: otherAllowed ? 0.5 : 1.0,
               child: ElevatedButton(
@@ -114,35 +116,35 @@ class _PermsPageState extends State<PermsPage> {
                     : () {
                         _requestPermission('X');
                       },
-                child: Text('Allow X'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 44, 67, 217),
+                  backgroundColor: const Color.fromARGB(255, 44, 67, 217),
                   foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),
+                child: const Text('Allow X'),
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             if (locationAllowed && storageAllowed && otherAllowed)
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SchedPage()),
+                    MaterialPageRoute(builder: (context) => const SchedPage()),
                   );
                 },
-                child: Text('Continue'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 44, 67, 217),
+                  backgroundColor: const Color.fromARGB(255, 44, 67, 217),
                   foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),
+                child: const Text('Continue'),
               ),
           ],
         ),

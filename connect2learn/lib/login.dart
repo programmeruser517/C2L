@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          PermsPage()), // Navigate to ThirdPage
+                          const PermsPage()), // Navigate to ThirdPage
                 );
               },
               child: const Text('Go to Third Page'),

@@ -29,9 +29,9 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(title: 'C2L | Home Page'),
       routes: {
         '/second': (context) => const LoginPage(),
-        '/third': (context) => PermsPage(),
+        '/third': (context) => const PermsPage(),
         '/fourth': (context) => const SchedPage(),
-        '/fifth': (context) => SkillsPage(),
+        '/fifth': (context) => const SkillsPage(),
         '/sixth': (context) => const OnorOffPage(),
         '/seventh': (context) => const SevenPage(),
         '/eight': (context) => const EightPage(),

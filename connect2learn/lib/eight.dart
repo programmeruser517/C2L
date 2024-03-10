@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'nine.dart';
 
 class EightPage extends StatefulWidget {
-  const EightPage({Key? key}) : super(key: key);
+  const EightPage({super.key});
 
   @override
   _EightPageState createState() => _EightPageState();
@@ -14,7 +14,7 @@ class _EightPageState extends State<EightPage> {
   bool _sending = false;
   bool _emailValid = true; // Add email validation state
 
-  List<String> _pendingRequests = ['John Doe', 'Alice Smith']; // Sample pending requests
+  final List<String> _pendingRequests = ['John Doe', 'Alice Smith']; // Sample pending requests
 
   @override
   Widget build(BuildContext context) {
@@ -32,49 +32,49 @@ class _EightPageState extends State<EightPage> {
                 'Invite Friends:',
                 style: TextStyle(fontSize: 20.0),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
                   controller: emailController,
                   decoration: InputDecoration(
                     labelText: 'Enter Email',
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                     errorText: !_emailValid ? 'Email not valid!' : null, // Display error message
                   ),
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: ElevatedButton(
                   onPressed: _sending ? null : () => _sendInvite(emailController.text),
-                  child: _sending ? CircularProgressIndicator() : const Text('Send Friend Request'),
+                  child: _sending ? const CircularProgressIndicator() : const Text('Send Friend Request'),
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               if (_sentEmail != null)
                 Text(
                   'Invite sent successfully to $_sentEmail\nContent: Be my friend!',
-                  style: TextStyle(color: Colors.green, fontSize: 15.0),
+                  style: const TextStyle(color: Colors.green, fontSize: 15.0),
                   textAlign: TextAlign.center,
                 ),
-              SizedBox(height: 20.0),
-              Text(
+              const SizedBox(height: 20.0),
+              const Text(
                 'Friend Requests : ',
                 style: TextStyle(color: Colors.red ,fontSize: 20.0),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               if (_pendingRequests.isNotEmpty)
                 Column(
                   children: _pendingRequests.map((request) => _buildPendingRequest(request)).toList(),
                 )
               else
-                Text(
+                const Text(
                   'No Friend Requests pending',
                   style: TextStyle(color: Colors.black),
                 ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -84,7 +84,7 @@ class _EightPageState extends State<EightPage> {
                 },
                 child: const Text('Go to Ninth Page'),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
@@ -100,10 +100,10 @@ class _EightPageState extends State<EightPage> {
 
   Widget _buildPendingRequest(String request) {
     return Container(
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 44, 67, 217), // Blue color for the box
+        color: const Color.fromARGB(255, 44, 67, 217), // Blue color for the box
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
@@ -111,18 +111,18 @@ class _EightPageState extends State<EightPage> {
         children: [
           Text(
             request,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
 
           ),
           IconButton(
-            icon: Icon(Icons.check),
+            icon: const Icon(Icons.check),
             onPressed: () {
               _acceptRequest(request);
             },
             color: Colors.green,
           ),
           IconButton(
-            icon: Icon(Icons.close),
+            icon: const Icon(Icons.close),
             onPressed: () {
               _rejectRequest(request);
             },
@@ -149,7 +149,7 @@ class _EightPageState extends State<EightPage> {
       });
 
       // Simulate delay for sending invite
-      Future.delayed(Duration(seconds: 2), () {
+      Future.delayed(const Duration(seconds: 2), () {
         setState(() {
           _sentEmail = email;
           _sending = false;
@@ -174,7 +174,7 @@ class _EightPageState extends State<EightPage> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('You accepted an invitation from $name'),
-        duration: Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
       ),
     );
   }
