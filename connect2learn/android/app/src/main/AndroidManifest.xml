@@ -2,7 +2,7 @@
     <application
         android:label="connect2learn"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@res/images/logo_small">
         <activity
             android:name=".MainActivity"
             android:exported="true"
