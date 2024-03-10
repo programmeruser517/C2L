@@ -94,4 +94,5 @@ class SevenPage extends StatelessWidget {
 class GlobalData {
   static String user_url = 'https://www.google.com';
   static String user = 'Xiangbo';
+  static int user_points = 0;
 }

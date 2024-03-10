@@ -17,7 +17,7 @@ class _OnorOffPageState extends State<OnorOffPage> {
   final Set<Marker> _markers = {};
   bool isSwitched = false;
   final Color mellowGreen = Color.fromARGB(255, 44, 67, 217);
-  int points = 0; // Add this line
+  int points = GlobalData.user_points; // Add this line
 
   @override
   void initState() {
