@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
         // This is the theme of your application.
         // ...
           ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          // center this title
+      home: const MyHomePage(title: 'C2L | Home Page'),
       routes: {
         '/second': (context) => LoginPage(),
         '/third': (context) => PermsPage(),
@@ -64,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        centerTitle: true,
       ),
       body: Center(
                 child: Column(
