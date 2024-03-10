@@ -1,40 +1,80 @@
 import 'package:flutter/material.dart';
 import 'eight.dart';
-
+import 'nine.dart' ;
 class SevenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Seventh Page'),
+        title: Text('Share'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'This is the Seventh Page',
-              style: TextStyle(fontSize: 20.0),
-            ),
-            SizedBox(height: 20.0),
+            SizedBox(height: 10.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          EightPage()), // Navigate to ThirdPage
+                  MaterialPageRoute(builder:(context)=>NinePage())
                 );
               },
-              child: Text('Go to Eigth Page'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 44, 67, 217), // background
+                foregroundColor: Colors.white, // foreground
+                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+              child: Text(
+                'Code',
+                style: TextStyle(fontSize: 20),
             ),
-            SizedBox(height: 20.0),
+          ),
+              
+            SizedBox(height: 10.0),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                print('Link button clicked');
               },
-              child: Text('Go Back'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 44, 67, 217), // background
+                foregroundColor: Colors.white, // foreground
+                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+              child: Text(
+                'Link',
+                style: TextStyle(fontSize: 20),
             ),
+          ),
+              
+      
+            SizedBox(height: 10.0),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder:(context)=>EightPage())
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 44, 67, 217), // background
+                foregroundColor: Colors.white, // foreground
+                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+              child: Text(
+                  'Add Friend',
+                  style: TextStyle(fontSize: 20), 
+              ),
+          ),
           ],
         ),
       ),
