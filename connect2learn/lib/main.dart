@@ -25,7 +25,8 @@ class MyApp extends StatelessWidget {
           // This is the theme of your application.
           // ...
           ),
-      home: const MyHomePage(title: 'Connect2Learn'),
+      // center this title
+      home: const MyHomePage(title: 'C2L | Home Page'),
       routes: {
         '/second': (context) => const LoginPage(),
         '/third': (context) => const PermsPage(),
@@ -82,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage>
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
       ),
       body: Center(
         child: AnimatedBuilder(
