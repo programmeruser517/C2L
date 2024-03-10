@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,13 +16,15 @@ class MyApp extends StatelessWidget {
           ),
       initialRoute: '/', // Set the initial route
       routes: {
-        '/callback': (context) => MyHomePage(), // Define your home route
+        '/callback': (context) => const MyHomePage(), // Define your home route
       },
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     // empty

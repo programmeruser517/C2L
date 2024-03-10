@@ -16,7 +16,7 @@ class _OnorOffPageState extends State<OnorOffPage> {
   LatLng currentLocation = const LatLng(0.0, 0.0);
   final Set<Marker> _markers = {};
   bool isSwitched = false;
-  final Color mellowGreen = Color.fromARGB(255, 44, 67, 217);
+  final Color mellowGreen = const Color.fromARGB(255, 44, 67, 217);
   int points = GlobalData.user_points; // Add this line
 
   @override
@@ -42,24 +42,24 @@ class _OnorOffPageState extends State<OnorOffPage> {
       if (permission == LocationPermission.denied) {
         // Permissions are denied, next time you could try
         // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale 
+        // Android's shouldShowRequestPermissionRationale
         // returned true. According to Android guidelines
         // your App should show an explanatory UI now.
         return Future.error('Location permissions are denied');
       }
     }
-    
+
     if (permission == LocationPermission.deniedForever) {
       // Permissions are denied forever, handle appropriately.
       return Future.error(
-        'Location permissions are permanently denied, we cannot request permissions.');
-    } 
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
 
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
     Position position = await Geolocator.getCurrentPosition();
     final location = LatLng(position.latitude, position.longitude);
-  
+
     final marker = Marker(
       markerId: const MarkerId("current_location"),
       position: location,
@@ -86,7 +86,7 @@ class _OnorOffPageState extends State<OnorOffPage> {
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
-    if(currentLocation.latitude != 0.0 && currentLocation.longitude != 0.0) {
+    if (currentLocation.latitude != 0.0 && currentLocation.longitude != 0.0) {
       controller.animateCamera(
         CameraUpdate.newCameraPosition(
           CameraPosition(
@@ -117,7 +117,7 @@ class _OnorOffPageState extends State<OnorOffPage> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Text(
-              '${points} pts', // Display the points
+              '$points pts', // Display the points
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -144,7 +144,7 @@ class _OnorOffPageState extends State<OnorOffPage> {
             const SizedBox(height: 20.0),
             Text(
               isSwitched ? 'ON' : 'OFF',
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0, // Increase the font size by 5 pixels
               ),
@@ -169,8 +169,8 @@ class _OnorOffPageState extends State<OnorOffPage> {
             MaterialPageRoute(builder: (context) => const SevenPage()),
           );
         },
+        backgroundColor: const Color.fromARGB(255, 44, 67, 217),
         child: const Icon(Icons.share),
-        backgroundColor: Color.fromARGB(255, 44, 67, 217),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
@@ -178,13 +178,13 @@ class _OnorOffPageState extends State<OnorOffPage> {
 }
 
 class Screen4 extends StatelessWidget {
-  const Screen4({Key? key}) : super(key: key);
+  const Screen4({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Screen 4'),
+        title: const Text('Screen 4'),
       ),
       body: Center(
         //make the page literally redirect to the schedule page

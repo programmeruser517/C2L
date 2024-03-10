@@ -53,8 +53,8 @@ class _SchedPageState extends State<SchedPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Center(
-                child: const Text(
+              const Center(
+                child: Text(
                   "What's your free time look like?\n (including desired group homework\n time, etc.)",
                   style: TextStyle(fontSize: 20.0),
                   textAlign: TextAlign.center,

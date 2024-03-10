@@ -43,7 +43,7 @@ class SevenPage extends StatelessWidget {
               onPressed: () {
                 Clipboard.setData(ClipboardData(text: GlobalData.user_url));
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
+                  const SnackBar(
                     content: Text('Link copied to clipboard'),
                   ),
                 );

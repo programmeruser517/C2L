@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       // center this title
       home: const MyHomePage(title: 'C2L | Home Page'),
       routes: {
-        '/second': (context) => LoginPage(),
+        '/second': (context) => const LoginPage(),
         '/third': (context) => const PermsPage(),
         '/fourth': (context) => const SchedPage(),
         '/fifth': (context) => const SkillsPage(),
